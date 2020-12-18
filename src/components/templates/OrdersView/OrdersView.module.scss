@@ -1,0 +1,15 @@
+.ordersWrapper {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  .orderImage{
+    width:50%;
+  }
+}
+
+.ordersWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}

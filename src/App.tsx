@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useContext, useState} from 'react';
+import './App.scss';
+import {Route, BrowserRouter as Router, Switch, useHistory} from 'react-router-dom';
+import Modal from "./components/organisms/Modal/Modal";
+import LoginForm from "./components/organisms/LoginForm/LoginForm";
+import CreateOrderPage from "./components/pages/CreateOrderPage/CreateOrderPage";
+import jwt from 'jwt-decode';
+import Register from "./components/pages/Register/Register";
+import Orders from "./components/pages/Orders/Orders";
+import Navigation from "./components/organisms/Navigation/Navigation";
+import {AuthContext} from "./authContext/AuthContext";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const authContext = useContext(AuthContext);
+    const routesForAuthenticatedUser =
+        <>
+            <Route exact path="/" component={CreateOrderPage}/>
+            <Route exact path="/orders" component={Orders}/>
+        </>
+    const routesForUnauthenticatedUser =
+        <>
+            <Route exact path="/" component={LoginForm}/>
+            <Route exact path="/login" component={LoginForm}/>
+            <Route exact path="/register" component={Register}/>
+        </>
+    return (
+        <Router>
+            <Navigation/>
+            <Switch>
+                {authContext.authenticated ? routesForAuthenticatedUser : routesForUnauthenticatedUser}
+            </Switch>
+        </Router>
+    );
 }
 
 export default App;

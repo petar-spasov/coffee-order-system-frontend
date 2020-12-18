@@ -1,0 +1,19 @@
+@import '../../../style/config';
+
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width:40rem;
+  height:20rem;
+  background-color: $secondary;
+  border-radius: 0.75rem;
+  margin: 10rem auto 0;
+
+  .error {
+    margin:0 auto;
+    color: $error;
+    font-size: 0.75rem;
+  }
+}

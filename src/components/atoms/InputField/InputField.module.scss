@@ -1,0 +1,30 @@
+@import '../../../style/config';
+
+.inputWrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+
+  .input {
+    background-color: $primary;
+    border:none;
+    width: 50%;
+    height:2rem;
+    border-radius: 0.2rem;
+    margin: 0 auto 1rem;
+    box-shadow: 0 0.25rem 0.5rem -0.5rem black;
+    font-size: 0.75rem;
+    padding: 0.5rem;
+  }
+
+  .label {
+    margin:0 auto;
+  }
+
+  .error {
+    margin:0 auto;
+    color: $error;
+    font-size: 0.75rem;
+  }
+}
